@@ -24,8 +24,10 @@ fetch(url)
 
         if (isDia === 1) {
             console.log("Está de dia");
+            document.getElementById('imagem-nuvem').src = "images/nuvemComSol.png";
         } else {
             console.log("Está de noite");
+            document.getElementById('imagem-nuvem').src = "images/lua.png";
         }
 
         if (precipitation > 2.5) { 
@@ -33,10 +35,8 @@ fetch(url)
             document.getElementById('condicao').innerText = "Chuva Forte";
         } else if (precipitation > 0.0) { 
             console.log("Chuva Fraca ou Leve");
-            document.getElementById('condicao').innerText = "Chuva Fraca ou Leve";
         } else {
             console.log("Não está chovendo");
-            document.getElementById('condicao').innerText = "Não está chovendo";
         }
         
         if (snowfall > 0) {
@@ -46,12 +46,12 @@ fetch(url)
 
         if (nuvens > 75) {
             console.log("Céu muito nublado");
-            document.getElementById('condicao').innerText = "Céu muito nublado";
+            document.getElementById('condicao').innerText = "Céu nublado";
+            document.getElementById('imagem-nuvem').src = "images/nuvem.png";
         } else if (nuvens > 50) {
             console.log("Céu parcialmente nublado");
-            document.getElementById('condicao').innerText = "Céu parcialmente nublado";
+            document.getElementById('condicao').innerText = "Céu nublado";
         } else {
-            console.log("Céu limpo");
         }
 
         if (windSpeed > 30) {
@@ -59,7 +59,6 @@ fetch(url)
         } else if (windSpeed > 15) {
             console.log("Vento moderado");
         } else {
-            console.log("Vento fraco");
         }
         
     })
