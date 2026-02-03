@@ -1,65 +1,31 @@
-const latitude = -26.486; 
-const longitude = -49.067;
-const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,cloudcover,wind_speed_10m,precipitation,snowfall,is_day`;
 
-fetch(url)
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(`Erro HTTP: ${response.status}`);
-        }
-        return response.json();
-    })
+const cidade = "Jaraguá do Sul"
+const url2 = `https://geocoding-api.open-meteo.com/v1/search?name=${cidade}&count=1&language=pt&format=json`
+fetch(url2)
+
+    .then((response) => response.json())
+
     .then((data) => {
-        const horaAtual = 0; 
+
+   
+
+        const latitude = data.results[0].latitude
+        const longitude = data.results[0].longitude 
+
+        console.log(latitude)
+        console.log(longitude)
+
+        const url = `https://api.open-meteo.com/v1/forecast?&latitude=${latitude}&longitude=${longitude}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto`;
+
         
-        const temperature = data.hourly.temperature_2m[horaAtual];
-        const nuvens = data.hourly.cloudcover[horaAtual];
-        const precipitation = data.hourly.precipitation[horaAtual];
-        const windSpeed = data.hourly.wind_speed_10m[horaAtual];
-        const snowfall = data.hourly.snowfall[horaAtual];
-        const isDia = data.hourly.is_day[horaAtual]; 
-        
-        document.getElementById('temperature').innerText = `${temperature} ${data.hourly_units.temperature_2m}`;
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => { 
+    
+            const temperatura = data.current_weather.temperature;
 
+            console.log(temperatura)
+            console.log(data)
+        })
 
-        if (isDia === 1) {
-            console.log("Está de dia");
-            document.getElementById('imagem-nuvem').src = "images/nuvemComSol.png";
-        } else {
-            console.log("Está de noite");
-            document.getElementById('imagem-nuvem').src = "images/lua.png";
-        }
-
-        if (precipitation > 2.5) { 
-            console.log("Chuva Forte");
-            document.getElementById('condicao').innerText = "Chuva Forte";
-        } else if (precipitation > 0.0) { 
-            console.log("Chuva Fraca ou Leve");
-        } else {
-            console.log("Não está chovendo");
-        }
-        
-        if (snowfall > 0) {
-            document.getElementById('condicao').innerText = "Está nevando";
-        } else {
-        }
-
-        if (nuvens > 75) {
-            console.log("Céu muito nublado");
-            document.getElementById('condicao').innerText = "Céu nublado";
-            document.getElementById('imagem-nuvem').src = "images/nuvem.png";
-        } else if (nuvens > 50) {
-            console.log("Céu parcialmente nublado");
-            document.getElementById('condicao').innerText = "Céu nublado";
-        } else {
-        }
-
-        if (windSpeed > 30) {
-            console.log("Vento forte");
-        } else if (windSpeed > 15) {
-            console.log("Vento moderado");
-        } else {
-        }
-        
-    })
-    .catch((error) => console.error('Erro ao obter dados meteorológicos:', error));
+})
