@@ -1,4 +1,3 @@
-
 const cidade = "Jaraguá do Sul"
 const url2 = `https://geocoding-api.open-meteo.com/v1/search?name=${cidade}&count=1&language=pt&format=json`
 fetch(url2)
@@ -6,8 +5,6 @@ fetch(url2)
     .then((response) => response.json())
 
     .then((data) => {
-
-   
 
         const latitude = data.results[0].latitude
         const longitude = data.results[0].longitude 
@@ -29,3 +26,16 @@ fetch(url2)
         })
 
 })
+
+
+const botao = document.getElementById('btn-busca');
+const form = document.getElementById('form-busca');
+const input = document.getElementById('input-cidade');
+
+botao.addEventListener('click', () => {
+    
+    botao.classList.add('hidden');
+
+    form.classList.remove('hidden');
+
+});
