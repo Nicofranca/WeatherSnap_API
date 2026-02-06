@@ -2,6 +2,7 @@ const botao = document.getElementById('btn-busca');
 const form = document.getElementById('form-busca');
 const input = document.getElementById('input-cidade');
 const textoCidade = document.getElementById('cidade-texto')
+const tempDisplay = document.getElementById('temp-valor')
 
 botao.addEventListener('click', () => {
     
@@ -45,6 +46,8 @@ fetch(urlGeoApi)
             .then((data) => { 
     
             const temperatura = data.current_weather.temperature;
+
+            tempDisplay.innerText = Math.round(temperatura)
 
             console.log(temperatura)
             console.log(data)
