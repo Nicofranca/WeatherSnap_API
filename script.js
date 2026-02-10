@@ -87,7 +87,7 @@ fetch(urlGeoApi)
             diaSemana3.innerText = pegarNomeSemana(day3);
 
 
-            console.log(tempMaxAmanha)
+            console.log(tempMax)
             console.log(temperaturaMax)
             console.log(temperaturaMin)
             console.log(temperatura)
