@@ -39,17 +39,83 @@
     </div>
         </header>
 
-        <main class="flex flex-col items-center justify-center flex-grow mt-10">
-            <div class="h">
+        <main>
+            <section class="flex flex-col items-center justify-center flex-grow mt-10">
+            <div class="flex">
                 <div id="temp-valor" class="text-8xl font-bold text-white tracking-tighter">
                     -- 
                 </div>
-                <p>°</p>
+                <p class="text-2xl text-gray-300 mt-2">°C</p>
             </div>
         
-        <p class="text-gray-400 text-xl mt-2">...</p>
+            <div class="flex">
+                <p class="text-gray-400 text-sm m-2">max: 
+                    <span id="max">__</span>°
+                </p>
+                <p class="text-gray-400 text-sm m-2">min: 
+                    <span id="min">__</span>°
+                </p>
+            </div>
+            </section>
+            
 
-    </main>
+            <section class="mt-20">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <h3 class="text-gray-300 font-medium">Próximos 3 dias</h3>
+                    <i class="text-gray-500 text-xs">Previsão</i>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+
+                    <div class="bg-gray-800/50 hover:bg-gray-800 transition rounded-2xl p-3 flex flex-col items-center justify-center border border-gray-700/30">
+                        <span id="diaSemana1" class="text-gray-400 text-xs font-medium mb-2">--</span>
+            
+                        <div class="w-8 h-8 mb-2" stroke="currentColor">
+                            <img src="" alt=""></img>
+                        </div>
+
+                        <p class="text-white font-bold text-lg">
+                            <span id="tempMaxAmanha1">__</span>°
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            <span id="tempMinAmanha1">__</span>°
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800/50 hover:bg-gray-800 transition rounded-2xl p-3 flex flex-col items-center justify-center border border-gray-700/30">
+                        <span id="diaSemana2" class="text-gray-400 text-xs font-medium mb-2">--</span>
+            
+                        <div class="w-8 h-8 mb-2" stroke="currentColor">
+                            <img src="" alt=""></img>
+                        </div>
+
+                        <p class="text-white font-bold text-lg">
+                            <span id="tempMaxAmanha2">__</span>°
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            <span id="tempMinAmanha2">__</span>°
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800/50 hover:bg-gray-800 transition rounded-2xl p-3 flex flex-col items-center justify-center border border-gray-700/30">
+                        <span id="diaSemana3" class="text-gray-400 text-xs font-medium mb-2">--</span>
+            
+                        <div class="w-8 h-8 mb-2" stroke="currentColor">
+                            <img src="" alt=""></img>
+                        </div>
+
+                        <p class="text-white font-bold text-lg">
+                            <span id="tempMaxAmanha3">__</span>°
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            <span id="tempMinAmanha3">__</span>°
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            </section>
+        </main>
         
     </div>
     
